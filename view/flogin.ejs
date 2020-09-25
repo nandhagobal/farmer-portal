@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Farmer</title>
+
+</head>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+            <div class="container">
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-branch" href="/">LOGO
+                    </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li class="nav-item offset-sm-1">
+                        <a href="/" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <!-- <li class="nav-item ">
+                        <a href="/" class="nav-link">About us</a>
+                    </li> -->
+                    <!-- <li class="nav-item ">
+                        <a href="/flogin" class="nav-link">Login<i class="fas fa-sign-in-alt"></i></a>
+                    </li> -->
+                </div>
+            </nav>
+        </div>
+        <div class="py-4">
+
+        </div>
+        <div class="container">
+            <%if(error){%>
+                <div class="alert alert-danger text-center">invalid username or password</div>
+            <%}%>
+        <ul class="nav-tabs nav nav-justified">
+            <li class="nav-item"><a class="nav-link text-uppercase" data-toggle="tab" data-target="#farmer" id="farmertab">Farmer</a></li>
+            <li class="nav-item"><a class="nav-link text-uppercase" data-toggle="tab" data-target="#buyer" id="buyertab">buyer</a></li>
+        </ul>
+        <div class="tab-content py-4">
+        <div class="tab-pane text-center py-1 container bg-dark" id="farmer">
+            <h2 class="text-success">FARMER LOGIN</h2>
+<div class="container border py-4 bg-light">
+<form method="post" action="/seller/loginCheck" class="form-group">
+<h2 class="text-secondary">LOGIN</h2>
+<input name="farmer_id" class="form-control" placeholder="Enter farmer ID" type="text"/><br/>
+<input type="password" class="form-control" placeholder="password" name="passwd"/><br/>
+<input type="submit" class="form-control btn btn-primary" value="Log in" />
+</form>
+<div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="check"><label for="check" class="custom-control-label">Remember me</label>
+</div>
+<a href="#">forget password</a>
+</div>
+</div>
+<div class="text-center py-1 container bg-dark tab-pane" id="buyer">
+    <h2 class="text-success">BUYER LOGIN</h2>
+<div class="container border py-4 bg-light">
+<form method="post" action="/shop/loginCheck" class="form-group">
+<h2 class="text-secondary">LOGIN</h2>
+<input name="phone" class="form-control" placeholder="Enter Phone number" type="text"/><br/>
+<input type="password" class="form-control" placeholder="password" name="passwd"/><br/>
+<input type="submit" class="form-control btn btn-primary" value="Log in" />
+</form>
+<div class="custom-control custom-checkbox">
+<input type="checkbox" class="custom-control-input" id="check"><label for="check" class="custom-control-label">Remember me</label>
+</div>
+<a href="#">forget password</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="page-footer bg-dark text-center py-3 text-light font-large" id="about">
+    <br><i class="fas fa-phone"></i>	044-944657942<br> 
+    <i class="fas fa-envelope"></i>		farmattic@gmail.com <br>
+    followus:  <i class="fab fa-facebook"></i>		<i class="fab fa-instagram"></i>		<i class="fab fa-whatsapp"></i>   <i class="fab fa-youtube"></i>
+</footer>
+</body>
+<script>
+    var i="<%=i%>";
+    if(i==0)
+    document.getElementById('farmertab').click();
+    else{
+        document.getElementById('buyertab').click();  
+    }
+</script>
+</html>

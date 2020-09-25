@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Order</title>
+        <meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <script src="/static/jquery.min.js"></script>
+        <script src="/static/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron bg-dark text-success text-center ">
+            <h1>FARMER ATTIC</h1>
+            </div>
+            <div>
+                <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed ">
+                    <a class="navbar-branch" href="/">LOGO
+                        </a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                        <li>
+                            <form method="GET" action="/search" class="form-inline offset-sm-1 py-1">
+                                <div class="input-group">
+                                <input type="text" id="in" class="form-control" placeholder="enter here to search" name="search">
+                                <div class="input-group-append">
+                                <button type ="submit" class="form-control  bg-dark text-light" ><i class="fas fa-search"></i></button>
+                                </div>
+                                </div>
+                                    </form>
+                        </li>
+                        <li class="nav-item offset-sm-1">
+                            <a href="/shop/profile" class="nav-link">Home<i class="fas fa-home"></i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/shop/myCart" class="nav-link">My Cart</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/shop/myOrder" class="nav-link">My Order</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/shop/logout" class="nav-link">Logout<i class="fas fa-sign-in-alt"></i></a>
+                        </li>
+                    </div>
+                </nav>
+            </div>
+            <div class="container py-4">
+                <span class="text-secondary h2">Order details:</span>
+                <%if(i>0){%>
+                    <%order.forEach((prod)=>{%>
+                        <div class="py-3">
+                <div class="card">   
+                    <div class="card-body" name="card">                                         
+                <p class="text-primary text-capitalize h5"> <%-prod.product.cropname-%></p>
+                <p class="text-success text-capitalize h5"></p>
+                <p class="text-info h5"><%-prod.quantity-%><small>(Qty)</small></p>
+                <input type="hidden" value="<%-prod._id-%>" name="prodId">
+                       <p class="text-danger h4" value="" name="price">&#x20b9;<%-prod.product.rpkg*prod.quantity-%></p>
+                </div>
+                </div>
+                        </div>
+                <%})%>
+                    
+
+                    </div>
+                    <div class="py-3"></div> 
+                <%}else{%>
+                    <p class="text-center text-danger h3 py-4">No order placed yet</p>
+                    <%}%>
+            </div>
+                
+    </body>
+</html>

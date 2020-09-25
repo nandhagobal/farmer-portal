@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UPLOAD</title>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+        <div>
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-branch" href="/">LOGO
+                    </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li class="nav-item offset-sm-1">
+                        <a href="/seller/profile" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/upload" class="nav-link">Upload<i class="fas fa-upload"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/user" class="nav-link">profile<i class="fas fa-user"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/logout" class="nav-link">logout<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                    
+                </div>
+            </nav>
+        </div>
+        <div class="py-3">
+
+        </div>
+<div class="container border">
+<h1 class="text-center text-warning text-capitalize">upload
+<a href="index1.html">
+    <button class="btn btn-primary"><i class="fas fa-camera"></i></button>
+    </a>
+    </h1>
+<form method="post" action="/seller/upload" class="form-group">
+    <label for="selector">Select the items:</label>
+  <select class="form-control" id="selector"name="crop">
+  <option value="carrot">carrot</option>
+  <option value="water melon">watermelon</option>
+  <option value="banana">banana</option>
+  <option value="apple">apple</option>
+</select> 
+<label for="quantity">Quantity</label>
+<input class="form-control" id="quantity" name="quantity" type="number"placeholder="Enter quantity" type="text">
+<label for="date" >Date</label>
+<input class="form-control" id="date" name="date" type="date">
+<br>
+<button class="btn btn-outline-success btn-light form-control"type="submit">UPLOAD<i class="fas fa-upload"></i></button>
+</form>
+  </div>
+ </body>
+ </html>

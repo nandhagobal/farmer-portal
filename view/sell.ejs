@@ -1,0 +1,134 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>
+portal
+</title>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+<style>
+.tn{
+    position:fixed;
+}
+
+</style>
+
+</head>
+<body>
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+        <div>
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed ">
+                <a class="navbar-branch" href="/"><img src="/static/farm1.png" width="100px" height="70px">
+                    </a>
+                    
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li>
+                        <form method="GET" action="/search" class="form-inline offset-sm-1 py-1">
+                            <div class="input-group">
+                            <input type="text" id="in" class="form-control" placeholder="enter here to search" name="search">
+                            <div class="input-group-append">
+                            <button type ="submit" class="form-control  bg-dark text-light" ><i class="fas fa-search"></i></button>
+                            </div>
+                            </div>
+                                </form>
+                    </li>
+                    <li class="nav-item offset-sm-1">
+                        <a href="/shop/profile" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/shop/getCart" class="nav-link">My Cart</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/shop/myOrder" class="nav-link">My Order</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/shop/user" class="nav-link">Profile<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/shop/logout" class="nav-link">Logout<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <i class="fas fa-moon" id="btn" style="color:lightseagreen;"></i>     
+                    </li>
+                </div>
+            </nav>
+        </div>
+<div class="container py-3">
+            <div class="text-danger text-center">
+                <h3 class="text-right"><i class="fas fa-user"></i><%-name%></h3>
+    <h2><img src="/static/farm1.png" width="100px" height="70px">TOP SEARCHES....</h2>
+    </div>
+</div>
+<div id="card">
+<%product.forEach((prod)=>{%>
+<%if(prod.quantity!=0){%>
+    <div class="container py-4" >
+    <div class="card py-4" >
+<div class="card-body">                                                       
+<p class="text-primary text-capitalize h3"><%=prod.cropname %>  </p>
+<p class="text-success"><%=prod.quantity%><small>(available)</small></p>
+<p class="text-danger"><%=prod.date%><small>(expries on)</small></p>
+<%if(prod.cropname!="banana"){%>
+<p class="h4 text-warning">&#x20b9;<%=prod.rpkg%><small>(per kg)</small></p>
+<%}%>
+<%if(prod.cropname=="banana"){%>
+<p class="h4 text-warning">&#x20b9;<%=prod.rpkg%><small>(per count)</small></p>
+<%}%>
+<div class="card-footer">
+<a href="/shop/item/<%=prod._id%>">
+<button  class="btn btn-info">view</button></a>
+</div>
+</div>
+</div>
+    </div>
+<%}%>
+<%})%>
+<%if(!product[0]){%>
+<div class="text-center text-dark">
+    No Result found
+</div>
+<%}%>  
+</div>
+
+</body>
+<script>
+    document.getElementById('btn').addEventListener('click',()=>{
+        if(document.getElementById('btn').getAttribute('class')==="fas fa-moon")
+        {
+            document.body.style.backgroundColor="black";
+            document.body.style.color="white";
+            document.getElementById('btn').style.color="yellow";
+            document.getElementById('btn').setAttribute('class','fas fa-sun');
+           
+            var e=document.getElementById('card').querySelectorAll('.card');
+            e.forEach((p)=>{
+                p.style.borderColor="antiquewhite";
+                p.style.backgroundColor="black"
+            })
+        }
+        else{
+            document.body.style.backgroundColor="white";
+            document.body.style.color="rgb(3, 27, 27)";
+            document.getElementById('btn').style.color="rgb(31, 27, 27)";
+            document.getElementById('btn').setAttribute('class','fas fa-moon');
+            var e=document.getElementById('card').querySelectorAll('.card');
+            e.forEach((p)=>{
+                p.style.borderColor="";
+                p.style.backgroundColor="white"
+
+            })
+            document.getElementById('btn').style.color="lightseagreen";
+        }
+    })
+    
+</script>
+</html>

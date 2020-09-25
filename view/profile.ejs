@@ -1,0 +1,91 @@
+<html>
+<head>
+     <title>Farmer profile</title>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+        <div>
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-branch" href="/">LOGO
+                    </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li class="nav-item offset-sm-1">
+                        <a href="/seller/profile" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/upload" class="nav-link">Upload<i class="fas fa-upload"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/user" class="nav-link">profile<i class="fas fa-user"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/logout" class="nav-link">logout<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                    
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+<div class="text-center text-success text-uppercase">
+<h4 class="text-right text-secondary"><i class="fas fa-user"></i><%-detail.name%></h4>
+<h2>farmer profile</h2>
+</div>
+<div class="container">
+    <h2 class="text-secondary text-capitalize">uploaded crop<small>(date-wise)</small></h2>
+<div class="col-sm-12">
+<table class="table table-striped">
+    <thead class="text-center text-primary">
+    <th>cropname</th>
+    <th>quantity</th>
+    <th>date</th>
+    <th>rate per kg</th>
+    <th>total value</th>
+    </thead>
+    <tbody align="center">
+    <%product.forEach((prod)=>{%>
+        <tr>
+        <td><%-prod.cropname%></td>
+        <td><%-prod.quantity%></td><td><%-prod.date%></td>
+        <td><%-prod.rpkg%></td>
+        <td><%-prod.rate%></td>
+        </tr>
+<%})%>
+    </tbody>
+</table>
+</div>
+<h2 class="text-secondary text-capitalize">upload crop<small>(total)</small></h2>
+<div class="col-sm-12">
+    <table class="table table-striped">
+        <thead class="text-center text-primary">
+        <th>cropname</th>
+        <th>quantity</th>
+        <th>rate per kg</th>
+        <th>total price</th>
+        </thead>
+        <tbody align="center">
+            <%products.forEach((prod)=>{%>
+                <tr>
+                <td><%-prod.cropname%></td>
+                <td><%-prod.quantity%></td>
+                <td><%-prod.rpkg%></td>
+                <td><%-prod.rate%></td>
+                </tr>
+        <%})%>
+        </tbody>
+    </table>
+    </div>
+    <div class="py-3"></div>
+    </div>
+</body>
+</html>

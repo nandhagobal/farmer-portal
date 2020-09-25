@@ -1,0 +1,208 @@
+<html>
+<head>
+
+<script>
+function opn()
+{
+document.getElementById("mynav").style.width="100%";
+}
+function cls()
+{
+document.getElementById("mynav").style.width="0%";
+}
+function transport(x){
+if(x.value=="yes")
+document.getElementById("nodis1").style.display="inline";
+else
+document.getElementById("nodis1").style.display="none";
+document.getElementById("l").value="";
+document.getElementById("m").value="";
+}
+function disap(x){
+x.style.borderColor="red";
+x.placeholder='';
+}
+function recolor(x){
+var a=x.value;
+if(a==""||a==null)
+{
+x.style.borderColor="red";
+}
+else
+{
+x.style.borderColor="green";
+x.style.color="lightgreen";
+}
+}
+</script>
+<style>
+.tn{
+position: relative;
+top:10px;
+left:300px;
+}
+</style>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+<body>
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+        </div class="container">
+            <div class="container">
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-branch" href="/">LOGO
+                    </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li class="nav-item offset-sm-1">
+                        <a href="/" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/flogin" class="nav-link">Login<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                </div>
+            </nav>
+        <ul class=" nav nav-pills nav-justified py-4">
+            <li class="nav-item" ><a href="#farmer" class="nav-link" id="farmertab" data-toggle="pill">FARMER</a></li>
+            <li class="nav-item"  ><a href="#buyer" class="nav-link" id="buyertab" data-toggle="pill">BUYER</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane container"id="farmer">
+                <div class="border">
+                <div class=" container">  
+                       <h2 class="text-center text-danger">FARMER REGISTRATION</h2>
+                        <div>
+                        
+                        <%if(i==1){%>
+                            <form method="post" class="form-group"action="/seller/create">
+                        <label for="name">Name :</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="enter the name" onclick="disap(this)" onblur="recolor(this)" value=<%=name%>><br>
+                        <label for="phone">Phone Number :</label>
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="phone no" onclick="disap(this)" onblur="recolor(this)" value=<%=phoneno%>><br>
+                        <span class="text-success">verified</span><br>
+                        <label for="address">Address :</label>
+                        <input type="text" name="address" id="address" class="form-control" placeholder="address" onclick="disap(this)" onblur="recolor(this)" value=<%=address%>><br>
+                        <label for="farmer_id">farmer id :</label>
+                        <input type="text" name="farmer_id" id="farmer_id"class="form-control" placeholder="farmer-id no" onclick="disap(this)" onblur="recolor(this)" value=<%=farmer_id%>><br>
+                        <label for="passwd">Password :</label>
+                        <input type="text" name="passwd" id="passwd" class="form-control" placeholder="password" onclick="disap(this)" onblur="recolor(this)" value=<%=password%>><br>
+                        Can you deliver on your own?:
+                        <input type="radio" name="trans" id="trans1" class="radio1" value="yes" onclick="transport(this)" >yes
+                        <input type="radio" name="trans" id="trans2" class="radio1" value="no" onclick="transport(this)">no
+                        <div class="nodis" id="nodis1">
+                        <br>
+                        <label for="l">Lorry No :</label>
+                        <input type="text" class="form-control" id="l" name="lorry_no" placeholder="lorry no" onclick="disap(this)" onblur="recolor(this)"><br>
+                        <label for="m">Maximum distance :</label>
+                        <input type="text" class="form-control" id="m" name="max_dis" placeholder="max distance" onclick="disap(this)" onblur="recolor(this)"><br>
+                        <br>
+                        </div>
+                        <br>
+                        <button class="btn btn-success form-control" type="submit" name="nextn">next &gt; &gt;</button>
+                            </form>
+                        <%}%>
+                        <%if(i==2){%>
+                            <form method="post" class="form-group"action="/seller/fverify">
+                                <input type="text" class="form-control" placeholder="enter the otp" name="otpno">
+                                <button class="btn btn-primary form-control" type="submit">verify</button>
+                            </form>
+                            <%}%>
+                        <%if(i==0){%>
+                            <form method="post" class="form-group"action="/seller/fotpgen">
+                                <label for="name">Name :</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="enter the name" onclick="disap(this)" onblur="recolor(this)"><br>
+                                <label for="phone">Phone Number :</label>
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="phone no" onclick="disap(this)" onblur="recolor(this)" ><br>
+                                <button class="btn btn-primary">click here to verify</button><br>
+                                <label for="address">Address :</label>
+                                <input type="text" name="address" id="address" class="form-control" placeholder="address" onclick="disap(this)" onblur="recolor(this)" ><br>
+                                <label for="farmer_id">farmer id :</label>
+                                <input type="text" name="farmer_id" id="farmer_id"class="form-control" placeholder="farmer-id no" onclick="disap(this)" onblur="recolor(this)" ><br>
+                                <label for="passwd">Password :</label>
+                                <input type="text" name="passwd" id="passwd" class="form-control" placeholder="password" onclick="disap(this)" onblur="recolor(this)" ><br>
+                                Can you deliver on your own?:
+                                <input type="radio" name="trans" id="trans1" class="radio1" value="yes" onclick="transport(this)" >yes
+                                <input type="radio" name="trans" id="trans2" class="radio1" value="no" onclick="transport(this)">no
+                                <div class="nodis" id="nodis1">
+                                <br>
+                                <label for="l">Lorry No :</label>
+                                <input type="text" class="form-control" id="l" name="lorry_no" placeholder="lorry no" onclick="disap(this)" onblur="recolor(this)"><br>
+                                <label for="m">Maximum distance :</label>
+                                <input type="text" class="form-control" id="m" name="max_dis" placeholder="max distance" onclick="disap(this)" onblur="recolor(this)"><br>
+                                <br>
+                                </div>
+                                <br>
+                                <button class="btn btn-success form-control" type="submit" disabled="true" name="nextn">next &gt; &gt;</button>
+                                    </form>
+                        <%}%>
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div id="buyer" class="tab-pane container show-in">
+                <div class="container border">
+                    <div class="container">
+                <h1 class="text-danger text-center">BUYER REGISTRATION</h1>
+<%if(j==0){%>
+    <form method="post" action="/shop/botpgen" class="form-group">
+        <label for="name">Name :</label>
+<input type="text"  name="name" id="name" class="form-control" placeholder="name" onclick="disap(this)" onblur="recolor(this)"><br>
+<label for="phone">Phone Number :</label>
+<input type="text"  name="phone" id="phone" class="form-control" placeholder="phone no" onclick="disap(this)" onblur="recolor(this)"><br>
+<button type="submit" class="btn btn-primary">verify your phone no here</button><br>
+<label for="address">Address :</label>
+<input type="text" name="address" id="address" class="form-control" placeholder="address" onclick="disap(this)" onblur="recolor(this)"><br>
+<label for="passwd">Password :</label>
+<input type="text"  name="passwd" id="passwd" class="form-control" placeholder="password" onclick="disap(this)" onblur="recolor(this)"><br>
+<button class="form-control btn btn-success" type="submit" name="sign in" disabled="true">next &gt; &gt;</button>
+</form>
+<%}%>
+<%if(j==2){%>
+    <form method="post" class="form-group" action="/shop/bverify">
+        <label for="otp">Enter the OTP</label>
+        <input type="text" class="form-control" placeholder="enter the otp" name="otpno" id="otp">
+        <button class="form-control" type="submit">verify</button>
+    </form>
+    <%}%>
+<%if(j==1){%>
+    <form method="post" action="/shop/create" class="form-group">
+        <label for="name">Name :</label>
+<input type="text"  name="name" id="name" class="form-control" placeholder="name" onclick="disap(this)" onblur="recolor(this)" value=<%=name%>><br>
+<label for="phone">Phone Number :</label>
+<input type="text"  name="phone" id="phone" class="form-control" placeholder="phone no" onclick="disap(this)" onblur="recolor(this)" value=<%=phoneno%>><br>
+<label class="text-success">verified</label><br>
+<label for="address">Address :</label>
+<input type="text" name="address" id="address" class="form-control" placeholder="address" onclick="disap(this)" onblur="recolor(this)" value=<%=address%>><br>
+<label for="passwd">Password :</label>
+<input type="text"  name="passwd" id="passwd" class="form-control" placeholder="password" onclick="disap(this)" onblur="recolor(this)" value=<%=password%>><br>
+<button class="form-control btn btn-success" type="submit" name="sign in">next &gt; &gt;</button>
+</form>
+<%}%>
+<br>
+
+</div>
+
+        </div>
+    </div>
+</body>
+<script>
+var k="<%=k%>";
+// var j="<%=j%>";
+if(k==0){
+    document.getElementById('farmertab').click();
+}
+else{
+    document.getElementById('buyertab').click();   
+}
+</script>
+</html>
+</html>

@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Profile</title>
+<meta charset="utf" name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+<style>
+    .size{
+        font-size: 100px;
+        color: rgb(7, 133, 7);
+    }
+</style>
+</head>
+<body>
+    <div class="jumbotron bg-dark text-success text-center ">
+        <h1>FARMER ATTIC</h1>
+        </div>
+        <div>
+            <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed ">
+                <a class="navbar-branch" href="/">LOGO
+                    </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-nav navbar-collapse " id="navbarcollapse">
+                    <li>
+                        <form method="GET" action="/search" class="form-inline offset-sm-1 py-1">
+                            <div class="input-group">
+                            <input type="text" id="in" class="form-control" placeholder="enter here to search" name="search">
+                            <div class="input-group-append">
+                            <button type ="submit" class="form-control  bg-dark text-light" ><i class="fas fa-search"></i></button>
+                            </div>
+                            </div>
+                                </form>
+                    </li>
+                    <li class="nav-item offset-sm-1">
+                        <a href="/seller/profile" class="nav-link">Home<i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/upload" class="nav-link">Upload<i class="fas fa-upload"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/user" class="nav-link">profile<i class="fas fa-user"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/seller/logout" class="nav-link">logout<i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                </div>
+            </nav>
+        </div>
+        <div class="container py-3">
+            <h2 class="text-capitalize text-center text-info">Profile</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                    <i class="fas fa-user size" ></i>
+                    </div>
+                    <div class="text-center text-secondary text-bold text-capitalize py-3">
+                    <h3>
+                    <span class="text-danger"><%-user.name%></span>
+                    <br>
+                    <span class="text-success"><%-user.phoneNo%></span>
+                    <br>
+                    <span class="text-info"><%-user.address%></span>
+                    <br>
+                    <span class="text-danger text-large"><%-user.farmer_id%></span>
+                    </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
